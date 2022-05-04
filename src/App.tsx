@@ -5,7 +5,7 @@ import { atom, useAtom } from 'jotai';
 
 import QuestionCard from './components/QuestionCard';
 import * as api from './api/api';
-import { GlobalStyle } from './App.styles';
+import { GlobalStyle, Wrapper } from './App.styles';
 
 
 const TOTAL_QUESTIONS = 10;
@@ -30,7 +30,7 @@ const App = () => {
   const { data, isLoading, isError } = useQuery(['getQuestions'], () => (
     api.getQuizes(TOTAL_QUESTIONS, api.Difficulty.EASY))
   );
-  
+
   const useStartTrivia = () => {
     if (data !== undefined) {
       setGameOver(false);
@@ -72,7 +72,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <div>
+      <Wrapper>
         <h1>
           Welcome to React Quiz App
         </h1>
@@ -101,7 +101,7 @@ const App = () => {
             ) : null}
         </div>
 
-      </div>
+      </Wrapper>
     </>
   )
 }
